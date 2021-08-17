@@ -1,11 +1,7 @@
-const add = (n1: number, n2: number, printRes: boolean, resStr: string) => {
-    let result = n1 + n2;
-    if(printRes){
-        console.log(resStr + result)
-    }else{
-        return
-    }
+type Person = { name: string, age: number }
+
+const greeting = ( person: Person ) => {
+    console.log("Hi my name is : ", person.name)
 }
 
-let n1 = 47, n2 = 57, printRes = true, resStr = "And the Fianl Result is : "
-add(n1,n2,printRes,resStr)
+greeting({name: 'Baal',age:  47})
