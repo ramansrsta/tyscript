@@ -1,7 +1,9 @@
-type Person = { name: string, age: number }
-
-const greeting = ( person: Person ) => {
-    console.log("Hi my name is : ", person.name)
+const add = (number1 : number, number2: number) : number => {
+    return number1 + number2
 }
 
-greeting({name: 'Baal',age:  47})
+let printResult: (a: number, b: number) => number;
+
+printResult = add
+
+console.log(printResult(7 , 8))
