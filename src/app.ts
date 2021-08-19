@@ -1,15 +1,53 @@
 class Department {
-    name: string;
-    constructor(n: string){
-        this.name = n
+    protected employees: string [] = [];
+
+    constructor(public name: string){
+        this.name = name
     }
 
     //additonal type safety using this
     describe(this: Department){
         console.log('Department : ', this.name)
     }
+
+    addEmployees(employee: string){
+        this.employees.push(employee)
+    }
+
+    printEmployees(){
+        console.log(this.employees)
+    }
 }
 
-const accounting = new Department("Accounting")
-const copiedAccounting = { name: "Pandu", describe: accounting.describe}
-copiedAccounting.describe()
+class Accounting extends Department {
+    private text:string;
+
+    get privateText(){
+        return console.log(this.text)
+    }
+
+    set setPrivateText(text: string){
+        this.text = text
+    }
+
+    constructor(public admins: string[]){
+        super("Accounting");
+        this.admins = admins
+        this.text = "HUmma"
+    }
+
+    printAdmins() {
+        console.log("Admins : " , this.admins)
+    }
+
+    addEmployees(name: string){
+        console.log('Huhahahah', name)
+    }
+}
+
+const accounting = new Accounting(["dilbar", "dilbar"])
+accounting.addEmployees('Chinku')
+accounting.printEmployees()
+accounting.printAdmins()
+accounting.privateText
+accounting.setPrivateText = "Ok tested"
