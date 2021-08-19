@@ -1,20 +1,20 @@
-interface Named {
-    readonly name: string;
-}
-interface Greetable extends Named {
-    greet(phrase: string): void;
-}
-class Person implements Greetable {
-    age = 30;
-    constructor(public name: string){
-        this.name = name
-    }
-
-    greet(phrase: string){
-        console.log(phrase + ' ' + this.name)
-    }
+type Admin = {
+    name: string;
+    priviliges: string[]
 }
 
-let user1: Greetable;
-user1 = new Person('Raman')
-user1.greet("Hi I am ")
+type Employee = {
+    name: string;
+    department: string;
+}
+
+type AdminEmployee =  Admin & Employee;
+
+let person : AdminEmployee;
+person = {
+    name: "Pandu",
+    department: "IT",
+    priviliges: ["Admin"]
+}
+
+console.log(person)
