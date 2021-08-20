@@ -1,20 +1,35 @@
-type Admin = {
-    name: string;
-    priviliges: string[]
+interface Bird {
+    type: 'bird',
+    flyingSpeed: number
 }
 
-type Employee = {
-    name: string;
-    department: string;
+interface Horse {
+    type: 'horse',
+    runningSpeed: number
 }
 
-type AdminEmployee =  Admin & Employee;
+type Animal = Bird | Horse;
 
-let person : AdminEmployee;
-person = {
-    name: "Pandu",
-    department: "IT",
-    priviliges: ["Admin"]
+function animal(animal: Animal){
+    let speed: number;
+    switch(animal.type){
+        case 'bird':
+            speed = animal.flyingSpeed
+            break;
+        case 'horse':
+            speed = animal.runningSpeed
+            break;
+    }
+    console.log('My speed is : ', speed)
 }
 
-console.log(person)
+animal({type: 'bird', flyingSpeed: 10})
+
+interface ErrorContainer {
+    [props: string] : string
+}
+
+const ErrorType: ErrorContainer = {
+    name: "Error in name",
+    email: "Email in Errro"
+}
