@@ -1,12 +1,21 @@
-function merge<P extends object, A extends object> (obj1: P, obj2: A){
-    return Object.assign(obj1, obj2)
+class DataStore<T extends string | number> {
+    private data : T[] = []
+
+    addData(item: T){
+        this.data.push(item)
+    }
+
+    removeData(item: T){
+        this.data.splice(this.data.indexOf(item),1)
+    }
+
+    getInfor(){
+        console.log([...this.data])
+    }
 }
 
-const objComb = merge({name: "Ram"}, {age: "23"})
-console.log(objComb.name)
-
-function extractandprint<T extends object, U extends keyof T> (obj: T, key: U){
-    return 'Value is ' + obj[key]
-}
-
-console.log(extractandprint({name: 'Raja'}, 'name'))
+const store = new DataStore<string>()
+store.addData("Ram");
+store.addData("Shyam");
+store.removeData("Ram")
+store.getInfor()
