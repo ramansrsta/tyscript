@@ -1,21 +1,10 @@
-class DataStore<T extends string | number> {
-    private data : T[] = []
+const person: Readonly<string[]> = ['Ram', 'Anna']
 
-    addData(item: T){
-        this.data.push(item)
-    }
-
-    removeData(item: T){
-        this.data.splice(this.data.indexOf(item),1)
-    }
-
-    getInfor(){
-        console.log([...this.data])
-    }
-}
-
-const store = new DataStore<string>()
-store.addData("Ram");
-store.addData("Shyam");
-store.removeData("Ram")
-store.getInfor()
+// There are some utility function provided
+// by typescript for users for better type safety
+// and in some case loosing a strict type
+// so in this above utility generic Readonly
+// typescript will give an error if you try to push
+// or pop in the array.
+// there are lots of other function like these you can check documentation
+// provided by typescript
